@@ -18,15 +18,17 @@
 - name: Make dir
   become: yes
   file:
-    path: '{{ pkg_install_dir }}'
+    path: '{{ item }}'
     state: directory
+    mode: 0660
+  with_items:
+  - '{{ pkg_log_dir }}'
+  - '{{ pkg_install_dir }}'
 
 - name: Configure kibana.
   template:
     src: kibana.yml.j2
     dest: /etc/kibana/kibana.yml
-    owner: kibana
-    group: kibana
     mode: 0660
   notify: restart kibana
 
