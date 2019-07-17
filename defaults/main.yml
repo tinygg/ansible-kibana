@@ -1,0 +1,18 @@
+---
+pkg_version: "5.0.2"
+# pkg_state: present
+pkg_url: "https://artifacts.elastic.co/downloads/kibana/kibana-{{ pkg_version }}-x86_64.rpm"
+
+pkg_service_state: started
+pkg_service_enabled: true
+
+srv_host: "0.0.0.0"
+srv_port: 9200
+
+http_url: "http://{{ inventory_hostname }}:{{ srv_port }}"
+ssl_verify: false
+host_name: "{{ inventory_hostname }}"
+
+pkg_install_dir: "/usr/lib/kibana"
+
+# pkg_log_dir: "/var/log/kibana"

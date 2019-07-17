@@ -1,0 +1,7 @@
+---
+- name: restart kibana
+  service: name=kibana state=restarted
+  # shell: service kibana restart
+
+- name: start kibana
+  service: name=kibana state=started

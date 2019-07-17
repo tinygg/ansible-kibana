@@ -1,0 +1,47 @@
+---
+# - include_tasks: setup-RedHat.yml
+  # when: ansible_os_family == 'RedHat'
+
+# - include_tasks: setup-Debian.yml
+  # when: ansible_os_family == 'Debian'
+
+- name: Uninstall kibana.
+  become: yes
+  shell: "rpm -evh kibana"
+  register: uninstall_rlt
+  ignore_errors: yes
+
+- name: Install kibana.
+  become: yes
+  shell: "rpm --install {{ pkg_url }}"
+
+- name: Make dir
+  become: yes
+  file:
+    path: {{pkg_install_dir}}
+    state: directory
+
+- name: Configure kibana.
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: kibana
+    group: kibana
+    mode: 0660
+  notify: restart kibana
+
+- name: Force a restart if configuration has changed.
+  meta: flush_handlers
+
+- name: Start kibana.
+  service:
+    name: kibana
+    state: "{{ pkg_service_state }}"
+    enabled: "{{ pkg_service_enabled }}"
+
+- name: Make sure kibana is running before proceeding.
+  wait_for:
+    host: "{{ srv_host }}"
+    port: "{{ srv_port }}"
+    delay: 3
+    timeout: 300
