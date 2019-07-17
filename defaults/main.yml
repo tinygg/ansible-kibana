@@ -7,10 +7,13 @@ pkg_service_state: started
 pkg_service_enabled: true
 
 srv_host: "0.0.0.0"
-srv_port: 9200
+srv_port: 5601
 
-http_url: "http://{{ inventory_hostname }}:{{ srv_port }}"
-ssl_verify: false
+es_host: "localhost"
+es_port: 9200
+es_url: "http://{{ es_host }}:{{ es_port }}"
+es_ssl_verify: false
+
 host_name: "{{ inventory_hostname }}"
 
 pkg_install_dir: "/usr/lib/kibana"
