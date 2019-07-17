@@ -18,7 +18,7 @@
 - name: Make dir
   become: yes
   file:
-    path: {{pkg_install_dir}}
+    path: '{{ pkg_install_dir }}'
     state: directory
 
 - name: Configure kibana.
