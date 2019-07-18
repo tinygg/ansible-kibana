@@ -30,10 +30,10 @@
     src: kibana.yml.j2
     dest: /etc/kibana/kibana.yml
     mode: 0660
-#  notify: restart kibana
+  notify: restart kibana
 
-#- name: Force a restart if configuration has changed.
-#  meta: flush_handlers
+- name: Force a restart if configuration has changed.
+  meta: flush_handlers
 
 - name: Start kibana.
   service:
