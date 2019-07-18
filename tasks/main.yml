@@ -14,7 +14,7 @@
 
 - name: Install kibana.
   become: yes
-  rpm:
+  yum:
     name: "{{ pkg_url }}"
     state: installed
 
