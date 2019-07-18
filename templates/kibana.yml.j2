@@ -16,7 +16,7 @@ server.host: "{{ srv_host }}"
 #server.maxPayloadBytes: 1048576
 
 # The Kibana server's name.  This is used for display purposes.
-server.name: "{{ host_name }}"
+# server.name: "{{ host_name }}"
 
 # The URL of the Elasticsearch instance to use for all your queries.
 elasticsearch.url: "{{ es_url }}"
@@ -55,7 +55,7 @@ elasticsearch.url: "{{ es_url }}"
 #elasticsearch.ssl.ca: /path/to/your/CA.pem
 
 # To disregard the validity of SSL certificates, change this setting's value to false.
-elasticsearch.ssl.verify: {{es_ssl_verify}}
+# elasticsearch.ssl.verify: {{es_ssl_verify}}
 
 # Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
 # the elasticsearch.requestTimeout setting.
