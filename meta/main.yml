@@ -15,5 +15,5 @@ galaxy_info:
     - kibana
     - es
     - standalone
-    - elasticsearch kibana
-    - es kibana
+    - elasticsearch_kibana
+    - es_kibana
